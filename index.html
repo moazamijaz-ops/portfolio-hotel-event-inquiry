@@ -321,6 +321,53 @@
       background-color: var(--color-sand-gray);
     }
 
+    /* Gatherings Cards */
+    .gatherings-card {
+      display: flex;
+      min-height: 480px;
+      background-color: var(--color-sand-gray);
+    }
+    .gatherings-card__text {
+      flex: 0 0 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 56px;
+    }
+    .gatherings-card__image {
+      flex: 0 0 65%;
+      overflow: hidden;
+    }
+    .gatherings-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .gatherings-card__subtitle {
+      font-family: var(--font-body);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-body-gray);
+      margin: 0 0 16px 0;
+    }
+    .gatherings-card__heading {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: var(--font-weight-light);
+      color: var(--color-primary-dark);
+      margin: 0 0 20px 0;
+      line-height: 1.05;
+    }
+    .gatherings-card__body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text-medium);
+      margin: 0 0 32px 0;
+    }
+
   </style>
 </head>
 <body>
@@ -386,8 +433,121 @@
      ============================================================ -->
 <main>
 
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section style="
+    position: relative;
+    width: 100%;
+    height: 687px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+  ">
+    <!-- Background image -->
+    <div style="
+      position: absolute;
+      inset: 0;
+      background-image: url('https://uploads.pendry.com/redesign/wp-content/uploads/sites/2/2018/10/24110730/meeting-rooms-san-diego-1861x850.webp');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    "></div>
+    <!-- Dark overlay -->
+    <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.45);"></div>
+    <!-- Hero content -->
+    <div style="position: relative; z-index: 1; text-align: center; padding: 0 40px; max-width: 900px;">
+      <h1 style="
+        font-family: var(--font-heading);
+        font-size: 58px;
+        font-weight: var(--font-weight-light);
+        line-height: 1.05;
+        color: #ffffff;
+        margin: 0 0 24px 0;
+        letter-spacing: 0.01em;
+      ">Plan Your Next Gathering</h1>
+      <p style="
+        font-family: var(--font-body);
+        font-size: 18px;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.85);
+        margin: 0;
+      ">Exceptional spaces for meetings, celebrations, and events at The Portfolio Hotel.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INTRO TEXT-BOX SECTION
+       ============================================================ -->
+  <section style="background-color: #ffffff; padding: 80px 0;">
+    <div class="container" style="text-align: center;">
+      <p style="
+        font-family: var(--font-body);
+        font-size: 13px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--color-body-gray);
+        margin: 0 0 24px 0;
+      ">Meeting &amp; Event Venues</p>
+      <p style="
+        font-family: var(--font-body);
+        font-size: 20px;
+        line-height: 1.65;
+        color: var(--color-text-medium);
+        max-width: 680px;
+        margin: 0 auto 40px;
+      ">Whether you're hosting an intimate board meeting, a multi-day conference, or an unforgettable celebration, The Portfolio Hotel offers versatile venues and dedicated planning support to bring your vision to life.</p>
+      <a href="#event-form" class="btn-primary">Request for Proposal</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GATHERINGS CARDS SECTION
+       ============================================================ -->
+
+  <!-- Card 1: Meetings — text left, image right -->
+  <div class="gatherings-card">
+    <div class="gatherings-card__text">
+      <p class="gatherings-card__subtitle">The Portfolio Hotel</p>
+      <h2 class="gatherings-card__heading">Meetings</h2>
+      <p class="gatherings-card__body">From boardrooms to breakout sessions, our state-of-the-art meeting spaces are equipped with cutting-edge technology and supported by a dedicated events team.</p>
+      <a href="#event-form" class="btn-ghost">Discover</a>
+    </div>
+    <div class="gatherings-card__image">
+      <img src="https://uploads.pendry.com/redesign/wp-content/uploads/sites/2/2023/09/26094552/meeting-room-space-san-diego.webp" alt="Meeting rooms at The Portfolio Hotel" />
+    </div>
+  </div>
+
+  <!-- Card 2: Celebrations — image left, text right -->
+  <div class="gatherings-card gatherings-card--reverse">
+    <div class="gatherings-card__image">
+      <img src="https://uploads.pendry.com/redesign/wp-content/uploads/sites/2/2023/09/26094516/PNB-5-EVENTS-BALLROOM-GRAND-04-0326.webp" alt="Celebrations ballroom at The Portfolio Hotel" />
+    </div>
+    <div class="gatherings-card__text">
+      <p class="gatherings-card__subtitle">The Portfolio Hotel</p>
+      <h2 class="gatherings-card__heading">Celebrations</h2>
+      <p class="gatherings-card__body">Say 'I do' or raise a glass in our stunning ballrooms and event terraces. The Portfolio Hotel sets the stage for weddings, galas, and milestone celebrations to remember.</p>
+      <a href="#event-form" class="btn-ghost">Discover</a>
+    </div>
+  </div>
+
+  <!-- Card 3: Event Venues — text left, image right -->
+  <div class="gatherings-card">
+    <div class="gatherings-card__text">
+      <p class="gatherings-card__subtitle">The Portfolio Hotel</p>
+      <h2 class="gatherings-card__heading">Event Venues</h2>
+      <p class="gatherings-card__body">Explore our curated collection of indoor and outdoor spaces, each designed to elevate your gathering with refined style and seamless service.</p>
+      <a href="#event-form" class="btn-ghost">Discover</a>
+    </div>
+    <div class="gatherings-card__image">
+      <img src="https://uploads.pendry.com/redesign/wp-content/uploads/sites/2/2023/09/26094516/event-ballroom-entry-space-san-diego.webp" alt="Event venues at The Portfolio Hotel" />
+    </div>
+  </div>
+
   <!-- Form Section -->
-  <section style="background-color: var(--color-sand-gray); padding: var(--spacing-section-md) 0;">
+  <section id="event-form" style="background-color: var(--color-sand-gray); padding: var(--spacing-section-md) 0;">
     <div class="container">
       <div class="row">
 
