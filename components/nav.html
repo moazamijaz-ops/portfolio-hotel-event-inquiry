@@ -1,0 +1,122 @@
+<!--
+  COMPONENT: Site Navigation
+  ==========================
+  Includes both the desktop nav bar (navp) and the full header with burger menu.
+
+  Usage:
+  - Copy the full .header-bar block into the <header> of your page.
+  - The burger button triggers the mobile overlay (.navm) — wire via JS.
+  - The "current" nav item gets a bottom border: style="border-bottom: 1px solid #231f20;"
+  - Add class "inverse" to .header-bar when the page has a white/light background
+    (makes logo/text appear dark).
+
+  Dependencies: pendry-tokens.css, pendry-components.css
+-->
+
+<header>
+  <!-- Full header: 146px total height = top utility bar + nav bar -->
+  <div class="header-bar" style="background-color: var(--color-sand-gray);">
+
+    <!-- Top row: burger | logo | reserve -->
+    <div class="header-bar__top" style="
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px var(--spacing-container-px);
+      flex: 1;
+    ">
+      <!-- Burger menu button (mobile + triggers overlay on desktop) -->
+      <button aria-label="Open/Close Menu" style="
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      ">
+        <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+        <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+        <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+        <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+      </button>
+
+      <!-- Logo (replace SVG or text with actual Pendry logo SVG) -->
+      <a href="/san-diego/" class="header-bar__logo" style="
+        text-decoration: none;
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: var(--font-weight-medium);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--color-primary-dark);
+      ">
+        PENDRY
+      </a>
+
+      <!-- Reserve CTA button -->
+      <a href="/san-diego/booking/" class="btn-secondary" style="
+        font-family: var(--font-body);
+        font-size: var(--text-button);
+        font-weight: var(--font-weight-medium);
+        letter-spacing: var(--ls-button);
+        text-transform: uppercase;
+        color: var(--color-primary-dark);
+        text-decoration: none;
+      ">
+        RESERVE
+      </a>
+    </div>
+
+    <!-- Desktop nav bar: 66px height, sand gray background -->
+    <nav class="nav-bar" aria-label="Main navigation">
+      <div class="nav-bar__inner">
+        <a class="nav-link" href="/san-diego/accommodations/">Accommodations</a>
+        <a class="nav-link" href="/san-diego/dining/">Dining &amp; Drink</a>
+        <a class="nav-link" href="/san-diego/gatherings/" style="border-bottom: 1px solid var(--color-primary-dark);">Gatherings</a>
+        <a class="nav-link" href="/san-diego/wellness/">Wellness</a>
+        <a class="nav-link" href="/san-diego/experiences/">Experiences</a>
+        <a class="nav-link" href="/san-diego/gallery/">Gallery</a>
+        <a class="nav-link" href="/san-diego/offers/">Offers</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile overlay nav (hidden by default, shown when burger clicked) -->
+  <div id="mobile-nav" style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--color-dark-charcoal);
+    z-index: 1000;
+    padding: 40px var(--spacing-container-px);
+    overflow-y: auto;
+  ">
+    <button aria-label="Close menu" style="
+      background: none;
+      border: none;
+      color: white;
+      font-family: var(--font-body);
+      font-size: var(--text-button);
+      letter-spacing: var(--ls-button);
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 48px;
+      padding: 0;
+    ">
+      Close
+    </button>
+
+    <nav aria-label="Mobile navigation">
+      <ul style="list-style: none; margin: 0; padding: 0;">
+        <li style="margin-bottom: 24px;"><a href="/san-diego/accommodations/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Accommodations</a></li>
+        <li style="margin-bottom: 24px;"><a href="/san-diego/dining/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Dining &amp; Drink</a></li>
+        <li style="margin-bottom: 24px;"><a href="/san-diego/gatherings/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Gatherings</a></li>
+        <li style="margin-bottom: 24px;"><a href="/san-diego/wellness/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Wellness</a></li>
+        <li style="margin-bottom: 24px;"><a href="/san-diego/experiences/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Experiences</a></li>
+        <li style="margin-bottom: 24px;"><a href="/san-diego/gallery/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Gallery</a></li>
+        <li style="margin-bottom: 24px;"><a href="/san-diego/offers/" style="font-family: var(--font-body); font-size: 20px; color: white; text-decoration: none; letter-spacing: 1px;">Offers</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

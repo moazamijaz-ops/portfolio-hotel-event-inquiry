@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Your Gathering | The Portfolio Hotel</title>
+  <link rel="stylesheet" href="pendry-tokens.css" />
+  <link rel="stylesheet" href="pendry-components.css" />
+  <style>
+
+    /* =====================================================
+       PAGE-SPECIFIC OVERRIDES & EXTRAS
+       ===================================================== */
+
+    /* Checkbox & radio group */
+    .form-check-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 4px;
+    }
+
+    .form-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .form-check__input {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--color-border-subtle);
+      background-color: var(--color-white);
+      cursor: pointer;
+      flex-shrink: 0;
+      position: relative;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-check__input:checked {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+    }
+
+    .form-check__input:checked::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 4px;
+      height: 8px;
+      border: 1.5px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .form-check__label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: var(--font-weight-regular);
+      color: var(--color-text-medium);
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    /* Phone field with country code prefix */
+    .form-phone-wrap {
+      display: flex;
+      height: var(--input-height);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-white);
+    }
+
+    .form-phone-wrap:focus-within {
+      border-color: var(--color-primary-dark);
+    }
+
+    .form-phone-country {
+      flex-shrink: 0;
+      width: 88px;
+      border: none;
+      border-right: 1px solid var(--color-border-subtle);
+      background: var(--color-white);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text-medium);
+      padding: 0 10px;
+      outline: none;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23231f20' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+    }
+
+    .form-phone-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: var(--text-input);
+      color: var(--color-primary-dark);
+      padding: 0 16px;
+      background: transparent;
+    }
+
+    /* Date input — override browser defaults */
+    .form-input[type="date"] {
+      color: var(--color-text-medium);
+      cursor: pointer;
+    }
+
+    /* File upload zone */
+    .form-upload-zone {
+      width: 100%;
+      min-height: 80px;
+      border: 1px dashed var(--color-border-subtle);
+      background: var(--color-white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 20px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-upload-zone:hover {
+      border-color: var(--color-primary-dark);
+      background-color: rgba(241,239,235,0.5);
+    }
+
+    .form-upload-zone input[type="file"] {
+      display: none;
+    }
+
+    .form-upload-zone__label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--color-body-gray);
+    }
+
+    .form-upload-zone__hint {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--color-body-gray);
+      opacity: 0.7;
+    }
+
+    /* Upload icon */
+    .form-upload-zone__icon {
+      display: block;
+      margin-bottom: 4px;
+      opacity: 0.5;
+    }
+
+    /* Consent checkbox area */
+    .form-consent {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .form-consent__input {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      border: 1px solid var(--color-border-subtle);
+      background-color: var(--color-white);
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-consent__input:checked {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+    }
+
+    .form-consent__input:checked::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 6px;
+      width: 4px;
+      height: 8px;
+      border: 1.5px solid white;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+
+    .form-consent__text {
+      font-family: var(--font-body);
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--color-body-gray);
+    }
+
+    .form-consent__text a {
+      color: var(--color-accent-blue);
+      text-decoration: none;
+    }
+
+    /* Section divider line */
+    .form-section-divider {
+      border: none;
+      border-top: 1px solid var(--color-border-subtle);
+      margin: 40px 0;
+    }
+
+    /* Form section heading */
+    .form-section-heading {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--color-body-gray);
+      margin: 0 0 24px 0;
+    }
+
+    /* Two-col form row */
+    .form-row-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: var(--spacing-form-row);
+    }
+
+    /* Required star */
+    .req {
+      color: var(--color-primary-dark);
+    }
+
+    /* Field group (label + input stacked, no floating) */
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .field-group .form-label-static {
+      font-family: var(--font-body);
+      font-size: var(--text-label);
+      font-weight: var(--font-weight-regular);
+      letter-spacing: var(--ls-label);
+      color: var(--color-text-medium);
+      padding: 0 0 0 16px;
+      display: block;
+      margin-bottom: 0;
+      /* Sits visually "inside" the top of the input */
+      position: relative;
+      top: 12px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .field-group .form-input,
+    .field-group .form-select {
+      /* Shift text down so label doesn't overlap */
+      padding-top: 20px;
+      padding-bottom: 4px;
+    }
+
+    .field-group .form-phone-wrap {
+      padding-top: 0;
+    }
+
+    /* Thin horizontal rule between group sections */
+    .form-group-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-body-gray);
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* Budget input with $ prefix */
+    .form-prefix-wrap {
+      position: relative;
+    }
+
+    .form-prefix-wrap::before {
+      content: '$';
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-body);
+      font-size: var(--text-input);
+      color: var(--color-body-gray);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Error state */
+    .form-input.has-error,
+    .form-select.has-error {
+      border-color: #c0392b;
+    }
+
+    /* Sticky nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-sand-gray);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     SITE HEADER & NAVIGATION
+     ============================================================ -->
+<header class="site-header">
+  <!-- Top bar: burger | logo | reserve -->
+  <div style="
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: var(--color-sand-gray);
+  ">
+    <!-- Burger -->
+    <button aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:6px;display:flex;flex-direction:column;gap:5px;">
+      <span style="display:block;width:22px;height:1px;background:var(--color-primary-dark);"></span>
+      <span style="display:block;width:22px;height:1px;background:var(--color-primary-dark);"></span>
+      <span style="display:block;width:22px;height:1px;background:var(--color-primary-dark);"></span>
+      <span style="display:block;width:22px;height:1px;background:var(--color-primary-dark);"></span>
+    </button>
+
+    <!-- Logo -->
+    <a href="/san-diego/" style="
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: var(--font-weight-medium);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--color-primary-dark);
+    ">THE PORTFOLIO</a>
+
+    <!-- Reserve CTA -->
+    <a href="/reservations/" class="btn-secondary">RESERVE</a>
+  </div>
+
+  <!-- Desktop nav bar -->
+  <nav style="
+    background-color: var(--color-sand-gray);
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    border-top: 1px solid var(--color-border-subtle);
+  " aria-label="Main navigation">
+    <a class="nav-link" href="/rooms/">Rooms &amp; Suites</a>
+    <a class="nav-link" href="/dining/">Dining &amp; Bar</a>
+    <a class="nav-link" href="/events/" style="border-bottom: 1px solid var(--color-primary-dark); padding-bottom: 2px;">Events</a>
+    <a class="nav-link" href="/spa/">Spa &amp; Wellness</a>
+    <a class="nav-link" href="/experiences/">Experiences</a>
+    <a class="nav-link" href="/gallery/">Gallery</a>
+    <a class="nav-link" href="/offers/">Offers</a>
+  </nav>
+</header>
+
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main>
+
+  <!-- Form Section -->
+  <section style="background-color: var(--color-sand-gray); padding: var(--spacing-section-md) 0;">
+    <div class="container">
+      <div class="row">
+
+        <!-- LEFT: heading + form -->
+        <div style="flex: 0 0 58.333%; max-width: 58.333%; padding: 0 12px 85px;">
+
+          <h1 class="heading-xl" style="margin-bottom: 16px;">
+            Plan Your Next Gathering<br>at The Portfolio Hotel
+          </h1>
+          <p class="body-text" style="margin-bottom: 32px;">
+            Fill out the form below and our dedicated events team will be in touch to help you create an unforgettable experience at The Portfolio Hotel.
+          </p>
+          <p class="form-required">Fields marked <span class="req">*</span> are required.</p>
+
+          <form action="#" method="post" novalidate id="pendry-event-form">
+
+            <!-- ---- EVENT DETAILS ---- -->
+            <p class="form-group-label">Event Details</p>
+
+            <!-- Event Type -->
+            <div style="margin-bottom: var(--spacing-form-row);">
+              <label for="event_type" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Event Type <span class="req">*</span></label>
+              <select id="event_type" name="event_type" class="form-select" style="padding:0 40px 0 16px;" required>
+                <option value="" disabled selected>Select event type</option>
+                <option value="Corporate Meeting">Corporate Meeting</option>
+                <option value="Corporate Retreat">Corporate Retreat</option>
+                <option value="Association Event">Association Event</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Family Reunion">Family Reunion</option>
+                <option value="Celebration">Celebration</option>
+                <option value="Social or Sport Club">Social or Sport Club</option>
+                <option value="Government Event">Government Event</option>
+                <option value="Embassy Event">Embassy Event</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Group Tour">Group Tour</option>
+              </select>
+            </div>
+
+            <!-- Event Name -->
+            <div style="margin-bottom: var(--spacing-form-row);">
+              <label for="event_name" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Event Name</label>
+              <input id="event_name" type="text" name="event_name" class="form-input" style="padding:0 16px;" placeholder="e.g. Annual Sales Conference" autocomplete="off" />
+            </div>
+
+            <!-- Organization Name -->
+            <div style="margin-bottom: var(--spacing-form-row);">
+              <label for="org_name" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Organization Name</label>
+              <input id="org_name" type="text" name="org_name" class="form-input" style="padding:0 16px;" placeholder="Company or organization" autocomplete="organization" />
+            </div>
+
+            <hr class="form-section-divider" />
+
+            <!-- ---- CONTACT INFORMATION ---- -->
+            <p class="form-group-label">Contact Information</p>
+
+            <!-- First + Last Name row -->
+            <div class="form-row-2col">
+              <div>
+                <label for="first_name" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">First Name <span class="req">*</span></label>
+                <input id="first_name" type="text" name="first_name" class="form-input" style="padding:0 16px;" placeholder="Jane" required autocomplete="given-name" />
+              </div>
+              <div>
+                <label for="last_name" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Last Name <span class="req">*</span></label>
+                <input id="last_name" type="text" name="last_name" class="form-input" style="padding:0 16px;" placeholder="Smith" required autocomplete="family-name" />
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div style="margin-top: var(--spacing-form-row); margin-bottom: var(--spacing-form-row);">
+              <label for="email" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Email Address <span class="req">*</span></label>
+              <input id="email" type="email" name="email" class="form-input" style="padding:0 16px;" placeholder="jane@company.com" required autocomplete="email" />
+            </div>
+
+            <!-- Phone with country code -->
+            <div style="margin-bottom: var(--spacing-form-row);">
+              <label for="phone" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Cell Phone Number <span class="req">*</span></label>
+              <div class="form-phone-wrap">
+                <select class="form-phone-country" aria-label="Country code">
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+52">🇲🇽 +52</option>
+                  <option value="+33">🇫🇷 +33</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+81">🇯🇵 +81</option>
+                  <option value="+86">🇨🇳 +86</option>
+                </select>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  class="form-phone-input"
+                  placeholder="Phone number"
+                  required
+                  autocomplete="tel"
+                />
+              </div>
+            </div>
+
+            <hr class="form-section-divider" />
+
+            <!-- ---- EVENT LOGISTICS ---- -->
+            <p class="form-group-label">Event Logistics</p>
+
+            <!-- Dates row -->
+            <div class="form-row-2col">
+              <div>
+                <label for="start_date" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Event Start Date <span class="req">*</span></label>
+                <input id="start_date" type="date" name="start_date" class="form-input" style="padding:0 16px;color:var(--color-text-medium);" required />
+              </div>
+              <div>
+                <label for="end_date" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Event End Date</label>
+                <input id="end_date" type="date" name="end_date" class="form-input" style="padding:0 16px;color:var(--color-text-medium);" />
+              </div>
+            </div>
+
+            <!-- Event Needs checkboxes -->
+            <div style="margin-top: var(--spacing-form-row); margin-bottom: var(--spacing-form-row);">
+              <span class="label-text" style="margin-bottom: 14px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-body-gray); opacity: 0.8;">Event Needs</span>
+              <div class="form-check-group" style="margin-top: 14px;">
+                <label class="form-check">
+                  <input type="checkbox" name="needs[]" value="Meeting Space" class="form-check__input" />
+                  <span class="form-check__label">Meeting Space</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="needs[]" value="Catering" class="form-check__input" />
+                  <span class="form-check__label">Catering</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="needs[]" value="Guestrooms" class="form-check__input" />
+                  <span class="form-check__label">Guestrooms</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="needs[]" value="Activities" class="form-check__input" />
+                  <span class="form-check__label">Activities</span>
+                </label>
+                <label class="form-check">
+                  <input type="checkbox" name="dates_flexible" value="Yes" class="form-check__input" />
+                  <span class="form-check__label">Dates Flexible</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Rooms + Budget row -->
+            <div class="form-row-2col">
+              <div>
+                <label for="rooms" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Number of Rooms Needed</label>
+                <input id="rooms" type="number" name="rooms" class="form-input" style="padding:0 16px;" min="0" max="20000" placeholder="0" />
+              </div>
+              <div>
+                <label for="budget" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Estimated Budget</label>
+                <div class="form-prefix-wrap">
+                  <input id="budget" type="text" name="budget" class="form-input" style="padding:0 16px 0 28px;" placeholder="0.00" />
+                </div>
+              </div>
+            </div>
+
+            <hr class="form-section-divider" />
+
+            <!-- ---- ADDITIONAL INFO ---- -->
+            <p class="form-group-label">Additional Information</p>
+
+            <!-- Tell Us More -->
+            <div style="margin-bottom: var(--spacing-form-row);">
+              <label for="comments" style="font-family:var(--font-body);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--color-body-gray);display:block;margin-bottom:6px;padding-left:2px;">Tell Us More</label>
+              <textarea
+                id="comments"
+                name="comments"
+                class="form-textarea"
+                rows="5"
+                placeholder="Share any additional details, alternative dates, or special requirements..."
+              ></textarea>
+            </div>
+
+            <!-- File Upload -->
+            <div style="margin-bottom: var(--spacing-form-row);">
+              <span class="label-text" style="margin-bottom: 12px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-body-gray); opacity: 0.8; display: block;">File Upload</span>
+              <label class="form-upload-zone" for="file_upload">
+                <input type="file" id="file_upload" name="file_upload" accept=".pdf,.doc,.docx,.jpg,.png" />
+                <svg class="form-upload-zone__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 16V4M12 4l-4 4M12 4l4 4" stroke="#65656a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M4 18h16" stroke="#65656a" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <span class="form-upload-zone__label">Drag &amp; drop your file here, or click to browse</span>
+                <span class="form-upload-zone__hint">Max 5.0 MB — PDF, DOC, JPG, PNG</span>
+              </label>
+            </div>
+
+            <hr class="form-section-divider" />
+
+            <!-- Consent checkbox -->
+            <div class="form-consent" style="margin-bottom: 32px;">
+              <input type="checkbox" id="consent" name="consent" class="form-consent__input" required />
+              <label for="consent" class="form-consent__text">
+                <span class="req">*</span> By submitting this form, you consent to receive text messages and/or calls from Portfolio Hotel, LLC, d.b.a The Portfolio Hotel at the number provided, for the sole purpose of responding to your inquiry or providing service-related information. These messages will not include marketing content. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help. View our <a href="/privacy-policy/" target="_blank">Privacy Policy</a> and <a href="/terms-of-service/" target="_blank">Terms of Service</a>.
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-primary">
+              Submit Inquiry
+            </button>
+
+          </form>
+        </div>
+
+        <!-- RIGHT: Contact Info Sidebar -->
+        <div style="flex: 0 0 33.333%; max-width: 33.333%; padding: 0 12px; margin-left: 8.3333%;">
+          <div class="contacts-sidebar">
+            <h2 class="contacts-sidebar__title">Contact Our Events Team</h2>
+            <p class="body-text-sm" style="margin-bottom: 24px;">
+              Our dedicated events team is ready to help you plan a seamless and memorable gathering at The Portfolio Hotel.
+            </p>
+            <a href="tel:19704716722" style="
+              display: block;
+              color: var(--color-accent-blue);
+              font-family: var(--font-body);
+              font-size: var(--text-body);
+              text-decoration: none;
+              margin-bottom: 8px;
+            ">+1 (970) 471-6722</a>
+            <a href="mailto:events@theportfoliohotel.com" style="
+              display: block;
+              color: var(--color-accent-blue);
+              font-family: var(--font-body);
+              font-size: var(--text-body);
+              text-decoration: none;
+              margin-bottom: 32px;
+            ">events@theportfoliohotel.com</a>
+
+            <hr class="form-section-divider" style="margin: 0 0 32px;" />
+
+            <h3 class="heading-md" style="font-size: 16px; margin-bottom: 12px;">Why The Portfolio Hotel?</h3>
+            <ul style="
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              font-family: var(--font-body);
+              font-size: 14px;
+              color: var(--color-text-medium);
+              line-height: 1.8;
+            ">
+              <li style="padding-left: 16px; position: relative;">
+                <span style="position: absolute; left: 0;">—</span>
+                Flexible event spaces for any occasion
+              </li>
+              <li style="padding-left: 16px; position: relative;">
+                <span style="position: absolute; left: 0;">—</span>
+                Thoughtfully appointed guest rooms &amp; suites
+              </li>
+              <li style="padding-left: 16px; position: relative;">
+                <span style="position: absolute; left: 0;">—</span>
+                Exceptional on-site culinary experiences
+              </li>
+              <li style="padding-left: 16px; position: relative;">
+                <span style="position: absolute; left: 0;">—</span>
+                Centrally located with easy access
+              </li>
+              <li style="padding-left: 16px; position: relative;">
+                <span style="position: absolute; left: 0;">—</span>
+                Dedicated events concierge from start to finish
+              </li>
+            </ul>
+
+            <hr class="form-section-divider" style="margin: 32px 0;" />
+
+            <p style="
+              font-family: var(--font-body);
+              font-size: 12px;
+              color: var(--color-body-gray);
+              line-height: 1.7;
+              opacity: 0.8;
+            ">
+              The Portfolio Hotel<br>
+              hello@sivconverts.com
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Col 1: Logo -->
+      <div>
+        <a href="/" aria-label="The Portfolio Hotel" style="text-decoration: none;">
+          <div style="
+            width: 60px; height: 60px;
+            background-color: var(--color-primary-dark);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+          ">
+            <span style="
+              font-family: var(--font-body);
+              font-size: 6px;
+              letter-spacing: 1px;
+              color: white;
+              text-transform: uppercase;
+              text-align: center;
+              line-height: 1.5;
+            ">THE<br>PORTFOLIO<br>HOTEL</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Col 2: Address + Social -->
+      <div class="footer__address">
+        <strong style="display:block; margin-bottom:10px; font-weight:var(--font-weight-medium); color:var(--color-body-gray);">The Portfolio Hotel</strong>
+        <div>Tel: <a href="tel:19704716722" class="footer__nav-link">+1 (970) 471-6722</a></div>
+        <a href="mailto:hello@sivconverts.com" class="footer__nav-link" style="display:block; margin-top:4px; margin-bottom:20px;">hello@sivconverts.com</a>
+        <div style="display:flex; gap:12px; margin-top:16px;">
+          <a href="https://www.linkedin.com/company/sivconverts" target="_blank" rel="noopener" aria-label="LinkedIn" style="
+            display:inline-flex; align-items:center; justify-content:center;
+            width:32px; height:32px; opacity:0.65;
+          ">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="2" stroke="#65656a" stroke-width="1.5"/><path d="M7 10v7M7 7v.5" stroke="#65656a" stroke-width="1.5" stroke-linecap="round"/><path d="M11 17v-4a2 2 0 0 1 4 0v4M11 10v7" stroke="#65656a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 3: Nav links -->
+      <div>
+        <ul class="footer__nav">
+          <li class="footer__nav-item"><a href="/contact/" class="footer__nav-link">Contact</a></li>
+          <li class="footer__nav-item"><a href="/rooms/" class="footer__nav-link">Rooms &amp; Suites</a></li>
+          <li class="footer__nav-item"><a href="/dining/" class="footer__nav-link">Dining &amp; Bar</a></li>
+          <li class="footer__nav-item"><a href="/events/" class="footer__nav-link">Events</a></li>
+          <li class="footer__nav-item"><a href="/spa/" class="footer__nav-link">Spa &amp; Wellness</a></li>
+          <li class="footer__nav-item"><a href="/experiences/" class="footer__nav-link">Experiences</a></li>
+          <li class="footer__nav-item"><a href="/gallery/" class="footer__nav-link">Gallery</a></li>
+          <li class="footer__nav-item"><a href="/offers/" class="footer__nav-link">Offers</a></li>
+          <li class="footer__nav-item"><a href="/careers/" class="footer__nav-link">Careers</a></li>
+          <li class="footer__nav-item"><a href="/privacy-policy/" class="footer__nav-link">Privacy Policy</a></li>
+          <li class="footer__nav-item"><a href="/terms-of-service/" class="footer__nav-link">Terms of Service</a></li>
+          <li class="footer__nav-item"><a href="/accessibility/" class="footer__nav-link">Accessibility</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Tagline -->
+      <div style="text-align:right;">
+        <span style="
+          font-family: var(--font-body);
+          font-size: 10px;
+          letter-spacing: 3px;
+          color: var(--color-body-gray);
+          text-transform: uppercase;
+          display: block;
+          line-height: 1.8;
+          opacity: 0.7;
+        ">Portfolio<br>Collection</span>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT — floating labels + file upload UX
+     ============================================================ -->
+<script>
+(function () {
+  // File upload — show filename
+  var fileInput = document.getElementById('file_upload');
+  var uploadZone = document.querySelector('.form-upload-zone');
+  if (fileInput && uploadZone) {
+    fileInput.addEventListener('change', function () {
+      var label = uploadZone.querySelector('.form-upload-zone__label');
+      if (fileInput.files.length > 0) {
+        label.textContent = fileInput.files[0].name;
+        uploadZone.style.borderColor = 'var(--color-primary-dark)';
+      }
+    });
+
+    // Drag & drop highlight
+    uploadZone.addEventListener('dragover', function (e) {
+      e.preventDefault();
+      uploadZone.style.borderColor = 'var(--color-primary-dark)';
+      uploadZone.style.backgroundColor = 'rgba(241,239,235,0.8)';
+    });
+
+    uploadZone.addEventListener('dragleave', function () {
+      uploadZone.style.borderColor = '';
+      uploadZone.style.backgroundColor = '';
+    });
+
+    uploadZone.addEventListener('drop', function (e) {
+      e.preventDefault();
+      uploadZone.style.borderColor = '';
+      uploadZone.style.backgroundColor = '';
+      if (e.dataTransfer.files.length > 0) {
+        var label = uploadZone.querySelector('.form-upload-zone__label');
+        label.textContent = e.dataTransfer.files[0].name;
+      }
+    });
+  }
+
+  // Form submit — basic validation feedback
+  document.getElementById('pendry-event-form').addEventListener('submit', function (e) {
+    var required = this.querySelectorAll('[required]');
+    var valid = true;
+    required.forEach(function (field) {
+      if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+        field.classList.add('has-error');
+        valid = false;
+      } else {
+        field.classList.remove('has-error');
+      }
+    });
+    if (!valid) {
+      e.preventDefault();
+      var first = this.querySelector('.has-error');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!--
+  COMPONENT: Footer
+  ==================
+  The full Pendry San Diego site footer.
+
+  Layout:
+  - Background: #f1efeb (sand gray)
+  - Padding: 119px top/bottom
+  - CSS Grid: 4 columns — Logo | Address+Social | Nav Links (2 cols) | LVX logo
+  - Grid template: ~167px 288px 1fr auto with 20px column gap, 30px row gap
+
+  Columns:
+  1. Pendry rose logo (SVG circle mark)
+  2. Hotel name, phone, address, social icons (Facebook + Instagram)
+  3. Navigation links in 2 columns (Contact, Magazine, Media, FAQs, etc.)
+  4. LVX by Pendry wordmark
+
+  Typography: Untitled-Sans 15px, color #65656a
+  Links: no underline, #65656a on rest, #231f20 on hover
+
+  Usage:
+  - Replace SVG placeholders with actual brand SVG assets.
+  - Place at the very bottom of every page.
+
+  Dependencies: pendry-tokens.css, pendry-components.css
+-->
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Col 1: Pendry Rose Logo -->
+      <div>
+        <a href="/san-diego/" aria-label="Pendry San Diego">
+          <!--
+            Replace this placeholder with the actual Pendry rose SVG logo.
+            Original SVG file: /app/themes/azds-default/__html/dist/img/1733f2c12bbb9d888bb4.svg
+          -->
+          <div style="
+            width: 64px;
+            height: 64px;
+            background-color: var(--color-primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+            <span style="
+              font-family: var(--font-body);
+              font-size: 8px;
+              letter-spacing: 1px;
+              color: white;
+              text-transform: uppercase;
+              text-align: center;
+              line-height: 1.4;
+            ">PENDRY<br>SAN DIEGO</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Col 2: Address + Contact + Social -->
+      <div class="footer__address">
+        <a href="/san-diego/" class="footer__nav-link" style="
+          display: block;
+          font-weight: var(--font-weight-medium);
+          margin-bottom: 12px;
+          font-size: var(--text-footer);
+          color: var(--color-body-gray);
+          text-decoration: none;
+        ">
+          San Diego
+        </a>
+
+        <div style="margin-bottom: 4px;">
+          Tel:&nbsp;<a href="tel:16197387000" class="footer__nav-link">(619) 738-7000</a>
+        </div>
+
+        <a
+          href="https://www.google.com/maps/place/Pendry+San+Diego/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer__nav-link"
+          style="display: block; margin-bottom: 20px;"
+        >
+          550 J Street<br>San Diego, CA 92101
+        </a>
+
+        <!-- Social icons -->
+        <div class="footer__social">
+          <a
+            href="https://www.facebook.com/pendrysandiego/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            aria-label="Facebook"
+            style="
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 32px;
+              height: 32px;
+              opacity: 0.65;
+              transition: opacity 0.2s ease;
+            "
+          >
+            <!-- Facebook SVG icon (simplified) -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 11h3V8h-3c-2.2 0-4 1.8-4 4v2h-2v3h2v9h3v-9h3l1-3h-4v-2c0-.55.45-1 1-1z" fill="#65656a"/>
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/pendrysandiego/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            aria-label="Instagram"
+            style="
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 32px;
+              height: 32px;
+              opacity: 0.65;
+              transition: opacity 0.2s ease;
+            "
+          >
+            <!-- Instagram SVG icon (simplified) -->
+            <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="20" height="20" rx="5" stroke="#65656a" stroke-width="1.5" fill="none"/>
+              <circle cx="16" cy="16" r="4.5" stroke="#65656a" stroke-width="1.5" fill="none"/>
+              <circle cx="22" cy="10" r="1" fill="#65656a"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 3: Site navigation links (2-column layout) -->
+      <nav aria-label="Footer navigation">
+        <ul class="footer__nav">
+          <li class="footer__nav-item"><a href="/san-diego/contact/" class="footer__nav-link">Contact</a></li>
+          <li class="footer__nav-item"><a href="http://distinctmag.com/" class="footer__nav-link" target="_blank" rel="noopener">Magazine</a></li>
+          <li class="footer__nav-item"><a href="/san-diego/media/" class="footer__nav-link">Media</a></li>
+          <li class="footer__nav-item"><a href="/san-diego/faqs/" class="footer__nav-link">FAQs</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/" class="footer__nav-link" target="_blank" rel="noopener">Montage International</a></li>
+          <li class="footer__nav-item"><a href="https://www.montage.com/" class="footer__nav-link" target="_blank" rel="noopener">Montage Hotels &amp; Resorts</a></li>
+          <li class="footer__nav-item"><a href="https://www.shoppendry.com/" class="footer__nav-link" target="_blank" rel="noopener">Shop Pendry</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/gift-cards/" class="footer__nav-link" target="_blank" rel="noopener">Gift Cards</a></li>
+          <li class="footer__nav-item"><a href="https://www.pendry.com/careers/" class="footer__nav-link" target="_blank" rel="noopener">Careers</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/privacy-policy/" class="footer__nav-link" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/privacy-policy/#california-residents" class="footer__nav-link" target="_blank" rel="noopener">Your Privacy Rights</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/cookie-policy/" class="footer__nav-link" target="_blank" rel="noopener">Cookie Policy</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/legal/" class="footer__nav-link" target="_blank" rel="noopener">Terms of Service</a></li>
+          <li class="footer__nav-item"><a href="https://www.montageinternational.com/accessibility/" class="footer__nav-link" target="_blank" rel="noopener">Accessibility</a></li>
+          <li class="footer__nav-item"><a href="/unsubscribe/" class="footer__nav-link">Unsubscribe</a></li>
+        </ul>
+      </nav>
+
+      <!-- Col 4: LVX by Pendry -->
+      <div style="text-align: right;">
+        <!--
+          Replace with actual LVX SVG logo.
+          Original: /app/themes/azds-default/__html/dist/img/105926e3aa30fcc4e984.svg
+        -->
+        <a href="#" aria-label="LVX by Pendry" style="text-decoration: none;">
+          <span style="
+            font-family: var(--font-body);
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: var(--color-body-gray);
+            text-transform: uppercase;
+            display: block;
+          ">LVX</span>
+          <span style="
+            font-family: var(--font-body);
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--color-body-gray);
+            text-transform: uppercase;
+            opacity: 0.6;
+          ">Pendry</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</footer>

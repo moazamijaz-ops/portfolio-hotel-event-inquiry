@@ -1,0 +1,109 @@
+<!--
+  COMPONENT: Stay-Connected / CTA Section
+  =========================================
+  Newsletter signup / stay-connected section that appears between the
+  main content and the footer on Pendry pages.
+
+  Layout:
+  - White background (body bg shows through)
+  - Padding: 135px top/bottom
+  - 2-column flex layout: large decorative copy (58%) + compact form (42%)
+  - Heading: Queens font, 44px, weight 300, color #65656a
+  - Description: Queens font, 40px, color #4a4a4a
+  - Inputs: 48px height (smaller than main form), border rgba(122,124,133,0.8)
+  - Submit: ghost underline button (.btn-ghost) in accent blue #35617a
+
+  Usage:
+  - Drop between main content and footer.
+  - Replace form action with your email signup endpoint.
+
+  Dependencies: pendry-tokens.css, pendry-components.css
+-->
+
+<section style="
+  background-color: var(--color-white);
+  padding: var(--spacing-section-xl) 0;
+">
+  <div class="container">
+    <div style="
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+      flex-wrap: wrap;
+    ">
+
+      <!-- Left: Marketing copy -->
+      <div style="flex: 0 0 58.333%; max-width: 58.333%;">
+        <div style="
+          font-family: var(--font-decorative);
+          font-size: var(--text-decorative-xl);
+          font-weight: var(--font-weight-light);
+          line-height: 1.1;
+          color: var(--color-body-gray);
+          margin-bottom: 16px;
+        ">
+          Sign up to be the first to know
+        </div>
+        <div style="
+          font-family: var(--font-decorative);
+          font-size: var(--text-decorative-lg);
+          font-weight: var(--font-weight-regular);
+          line-height: 1.15;
+          color: var(--color-text-medium);
+        ">
+          about seasonal happenings, exclusive offers and more from Pendry Hotels &amp; Resorts.
+        </div>
+      </div>
+
+      <!-- Right: Signup form -->
+      <div style="flex: 1; min-width: 280px;">
+        <form action="#" method="post" novalidate>
+
+          <!-- Name row -->
+          <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+            <input
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              required
+              aria-label="First Name"
+              class="form-input form-input--sm"
+              style="flex: 1;"
+            />
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+              required
+              aria-label="Last Name"
+              class="form-input form-input--sm"
+              style="flex: 1;"
+            />
+          </div>
+
+          <!-- Email + Submit row -->
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              aria-label="Email"
+              class="form-input form-input--sm"
+              style="flex: 1;"
+            />
+            <button
+              type="submit"
+              class="btn-ghost"
+              style="white-space: nowrap; font-size: 18px;"
+            >
+              Submit
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

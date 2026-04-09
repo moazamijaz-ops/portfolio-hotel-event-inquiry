@@ -1,0 +1,700 @@
+/* ============================================================
+   PENDRY SAN DIEGO — COMPONENT STYLES
+   Import pendry-tokens.css first.
+   ============================================================ */
+
+/* --------------------------------------------------
+   RESET & BASE
+-------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--lh-body);
+  color: var(--color-body-gray);
+  background-color: var(--color-white);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY
+-------------------------------------------------- */
+.heading-xl {
+  font-family: var(--font-heading);
+  font-size: var(--text-h1);
+  font-weight: var(--font-weight-light);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-normal);
+  color: var(--color-primary-dark);
+  margin: 0 0 24px 0;
+}
+
+.heading-lg {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  color: var(--color-primary-dark);
+  margin: 0 0 16px 0;
+}
+
+.heading-decorative-xl {
+  font-family: var(--font-decorative);
+  font-size: var(--text-decorative-xl);
+  font-weight: var(--font-weight-light);
+  line-height: 1.1;
+  color: var(--color-body-gray);
+  margin: 0 0 24px 0;
+}
+
+.heading-decorative-lg {
+  font-family: var(--font-decorative);
+  font-size: var(--text-decorative-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.15;
+  color: var(--color-text-medium);
+  margin: 0 0 24px 0;
+}
+
+.heading-md {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: var(--font-weight-regular);
+  line-height: 26px;
+  color: var(--color-primary-dark);
+  margin: 0 0 12px 0;
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-size: var(--text-paragraph);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--lh-paragraph);
+  color: var(--color-text-medium);
+  margin: 0 0 16px 0;
+}
+
+.body-text-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--lh-body);
+  color: var(--color-body-gray);
+  margin: 0 0 12px 0;
+}
+
+.caption {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+  color: var(--color-body-gray);
+}
+
+.label-text {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--lh-label);
+  letter-spacing: var(--ls-label);
+  color: var(--color-text-medium);
+  display: block;
+}
+
+/* --------------------------------------------------
+   LAYOUT — Container
+-------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-container-px);
+  padding-right: var(--spacing-container-px);
+}
+
+.page-wrap {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+   LAYOUT — Grid
+-------------------------------------------------- */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.col {
+  padding-left: 12px;
+  padding-right: 12px;
+  flex: 1 1 0;
+}
+
+.col-1-2 {
+  padding-left: 12px;
+  padding-right: 12px;
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-5-12 {
+  padding-left: 12px;
+  padding-right: 12px;
+  flex: 0 0 auto;
+  width: 41.6667%;
+}
+
+.col-offset-1-12 {
+  margin-left: 8.3333%;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.grid-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.grid-4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* --------------------------------------------------
+   NAVIGATION
+-------------------------------------------------- */
+.nav-bar {
+  background-color: var(--color-sand-gray);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-container-px);
+}
+
+.nav-link {
+  font-family: var(--font-body);
+  font-size: var(--text-nav);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--ls-nav);
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity var(--transition-base);
+}
+
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+.header-bar {
+  position: relative;
+  height: var(--header-height);
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.header-bar__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px var(--spacing-container-px);
+  flex: 1;
+}
+
+.header-bar__logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+
+/* Box button — primary CTA */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background-color: transparent;
+  border: var(--btn-box-border);
+  border-radius: var(--radius-button);
+  padding: var(--btn-box-padding);
+  height: var(--btn-box-height);
+  min-width: var(--btn-box-width);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+/* Secondary — nav utility button (no border) */
+.btn-secondary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--lh-button);
+  letter-spacing: var(--ls-button);
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--transition-base);
+}
+
+.btn-secondary:hover {
+  opacity: 0.7;
+}
+
+/* Ghost / underline button — accent links */
+.btn-ghost {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--text-link-accent);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-accent-blue);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-accent);
+  border-radius: 0;
+  padding: 0 0 5px 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--transition-base), opacity var(--transition-base);
+}
+
+.btn-ghost:hover {
+  border-color: var(--color-accent-blue);
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------
+   FORM ELEMENTS
+   Floating label pattern: label sits inside input
+   and animates up on focus via .form__label--focus class
+   (added via JS)
+-------------------------------------------------- */
+.form-field {
+  position: relative;
+  height: var(--input-height);
+  margin-bottom: var(--spacing-form-row);
+}
+
+.form-field--textarea {
+  height: auto;
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-size: var(--text-input);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-medium);
+  pointer-events: none;
+  transition: all var(--transition-base);
+  z-index: 1;
+}
+
+.form-label--float {
+  top: 12px;
+  transform: none;
+  font-size: var(--text-label);
+  letter-spacing: var(--ls-label);
+}
+
+.form-input {
+  width: 100%;
+  height: var(--input-height);
+  font-family: var(--font-body);
+  font-size: var(--text-input);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-input);
+  padding: var(--input-padding);
+  outline: none;
+  transition: border-color var(--transition-base);
+  display: block;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary-dark);
+}
+
+.form-input::placeholder {
+  color: transparent; /* labels handle placeholder text */
+}
+
+.form-select {
+  width: 100%;
+  height: var(--input-height);
+  font-family: var(--font-body);
+  font-size: var(--text-input);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-medium);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-input);
+  padding: var(--input-padding);
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='13' height='8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5.5 6L12 1' stroke='%23231f20' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: var(--textarea-height);
+  font-family: var(--font-body);
+  font-size: var(--text-input);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-input);
+  padding: var(--textarea-padding);
+  outline: none;
+  resize: vertical;
+  display: block;
+  transition: border-color var(--transition-base);
+}
+
+.form-textarea:focus {
+  border-color: var(--color-primary-dark);
+}
+
+.form-submit {
+  /* Use .btn-primary */
+  margin-top: 24px;
+}
+
+/* Stay-connected form variant — smaller inputs */
+.form-input--sm {
+  height: var(--input-height-sm);
+  padding: var(--input-padding-sm);
+  border-color: var(--color-border-medium);
+  font-size: var(--text-input);
+  color: var(--color-body-gray);
+}
+
+/* Required field indicator */
+.form-required {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-body-gray);
+  display: block;
+  margin-bottom: 24px;
+}
+
+/* --------------------------------------------------
+   SECTIONS
+-------------------------------------------------- */
+
+/* Gray background section */
+.section-gray {
+  background-color: var(--color-sand-gray);
+  padding: var(--spacing-section-md) 0;
+}
+
+/* White / content section */
+.section-content {
+  background-color: var(--color-white);
+  padding: var(--spacing-section-md) 0;
+}
+
+/* Hero / page header section */
+.section-hero {
+  background-color: var(--color-sand-gray);
+  padding: var(--spacing-section-md) 0;
+}
+
+/* RFP form section — 2-column layout */
+.section-form {
+  background-color: var(--color-sand-gray);
+  padding: var(--spacing-section-md) 0;
+}
+
+.section-form .form-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 -12px;
+}
+
+.section-form .form-layout__main {
+  flex: 0 0 auto;
+  width: 50%;
+  padding: 0 12px;
+}
+
+.section-form .form-layout__sidebar {
+  flex: 0 0 auto;
+  width: 41.6667%;
+  margin-left: 8.3333%;
+  padding: 0 12px;
+}
+
+/* Contacts sidebar */
+.contacts-sidebar {
+  border-left: 1px solid var(--color-border-subtle);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contacts-sidebar__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+}
+
+.contacts-sidebar a {
+  color: var(--color-accent-blue);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+}
+
+/* Stay-connected CTA section */
+.section-cta {
+  background-color: var(--color-white);
+  padding: var(--spacing-section-xl) 0;
+}
+
+.section-cta .container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.section-cta__copy {
+  flex: 0 0 58.333%;
+}
+
+.section-cta__form {
+  flex: 1;
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+.footer {
+  background-color: var(--color-sand-gray);
+  padding: var(--spacing-section-lg) 0;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 167px 288px 1fr auto;
+  gap: 30px 20px;
+  align-items: start;
+}
+
+.footer__logo {
+  display: block;
+}
+
+.footer__address {
+  font-family: var(--font-body);
+  font-size: var(--text-footer);
+  line-height: var(--lh-footer);
+  color: var(--color-body-gray);
+}
+
+.footer__nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 24px;
+}
+
+.footer__nav-item {
+  margin-bottom: 8px;
+}
+
+.footer__nav-link {
+  font-family: var(--font-body);
+  font-size: var(--text-footer);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-body-gray);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.footer__nav-link:hover {
+  color: var(--color-primary-dark);
+}
+
+.footer__social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.footer__social-link {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
+}
+
+.footer__social-link:hover {
+  opacity: 1;
+}
+
+/* --------------------------------------------------
+   DIVIDERS & DECORATIVE ELEMENTS
+-------------------------------------------------- */
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border-subtle);
+  margin: 40px 0;
+}
+
+.divider--accent {
+  border-color: var(--color-accent-blue);
+}
+
+/* --------------------------------------------------
+   UTILITY CLASSES
+-------------------------------------------------- */
+.text-center { text-align: center; }
+.text-uppercase { text-transform: uppercase; }
+.text-accent { color: var(--color-accent-blue); }
+.text-dark { color: var(--color-primary-dark); }
+.text-muted { color: var(--color-body-gray); }
+
+.bg-sand { background-color: var(--color-sand-gray); }
+.bg-white { background-color: var(--color-white); }
+.bg-dark { background-color: var(--color-primary-dark); }
+
+.mt-sm { margin-top: 16px; }
+.mt-md { margin-top: 32px; }
+.mt-lg { margin-top: 64px; }
+.mb-sm { margin-bottom: 16px; }
+.mb-md { margin-bottom: 32px; }
+.mb-lg { margin-bottom: 64px; }
+
+/* --------------------------------------------------
+   RESPONSIVE (Mobile)
+   Nav collapses to burger; grid stacks to 1 col
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  .grid-2col,
+  .grid-3col,
+  .grid-4col {
+    grid-template-columns: 1fr;
+  }
+
+  .section-form .form-layout__main,
+  .section-form .form-layout__sidebar {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .section-form .form-layout__sidebar {
+    border-left: none;
+    border-top: 1px solid var(--color-border-subtle);
+    padding: 32px 0 0 0;
+  }
+
+  .section-cta .container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .section-cta__copy {
+    flex: none;
+    width: 100%;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer__nav {
+    columns: 1;
+  }
+
+  .heading-xl {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .heading-decorative-xl {
+    font-size: 30px;
+  }
+
+  .heading-decorative-lg {
+    font-size: 28px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    min-width: unset;
+  }
+}

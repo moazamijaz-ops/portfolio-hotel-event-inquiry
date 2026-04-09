@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendry San Diego — Living Style Guide</title>
+  <link rel="stylesheet" href="pendry-tokens.css" />
+  <link rel="stylesheet" href="pendry-components.css" />
+  <style>
+    /* Style guide chrome only — not part of the design system */
+    .sg-section {
+      padding: 64px 0;
+      border-bottom: 1px solid #e0ddd8;
+    }
+    .sg-section:last-child { border-bottom: none; }
+    .sg-label {
+      font-family: monospace;
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .sg-title {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      padding: 0 0 24px 0;
+      border-bottom: 1px solid #e0ddd8;
+      margin-bottom: 48px;
+    }
+    .sg-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .sg-swatch {
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .sg-swatch__color {
+      height: 100px;
+    }
+    .sg-swatch__info {
+      padding: 12px;
+      background: white;
+    }
+    .sg-swatch__name {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: #231f20;
+      display: block;
+    }
+    .sg-swatch__hex {
+      font-family: monospace;
+      font-size: 12px;
+      color: #888;
+      display: block;
+      margin-top: 2px;
+    }
+    .sg-swatch__usage {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: #aaa;
+      display: block;
+      margin-top: 4px;
+    }
+    .sg-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+    .sg-component-label {
+      font-family: monospace;
+      font-size: 10px;
+      color: #bbb;
+      display: block;
+      margin-top: 8px;
+    }
+    .sg-box {
+      padding: 40px;
+      background: #f9f8f6;
+      margin-bottom: 32px;
+    }
+    .sg-box--dark {
+      background: #231f20;
+    }
+    .sg-box--sand {
+      background: var(--color-sand-gray);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     PENDRY SAN DIEGO — LIVING STYLE GUIDE
+     Open this file in a browser for a visual reference.
+     ============================================================ -->
+
+<div style="background: #231f20; color: #f1efeb; padding: 24px 32px; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between;">
+  <span style="font-family: monospace; font-size: 13px; letter-spacing: 1px;">PENDRY SAN DIEGO — Design System</span>
+  <span style="font-family: monospace; font-size: 11px; opacity: 0.5;">pendry-components.html</span>
+</div>
+
+<div class="container" style="padding-top: 80px; padding-bottom: 80px;">
+
+  <!-- ============================================================
+       1. COLOUR PALETTE
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">01 — Colour Palette</div>
+
+    <span class="sg-label">Primary Colours</span>
+    <div class="sg-swatch-grid">
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #231f20;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Primary Dark</span>
+          <span class="sg-swatch__hex">#231f20</span>
+          <span class="sg-swatch__usage">Headings, nav, buttons</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #f1efeb; border-bottom: 1px solid #e0ddd8;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Sand Gray</span>
+          <span class="sg-swatch__hex">#f1efeb</span>
+          <span class="sg-swatch__usage">Section bg, footer bg</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #ffffff; border-bottom: 1px solid #e0ddd8;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">White</span>
+          <span class="sg-swatch__hex">#ffffff</span>
+          <span class="sg-swatch__usage">Main bg, form inputs</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #65656a;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Body Gray</span>
+          <span class="sg-swatch__hex">#65656a</span>
+          <span class="sg-swatch__usage">Body text, footer text</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #4a4a4a;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Text Medium</span>
+          <span class="sg-swatch__hex">#4a4a4a</span>
+          <span class="sg-swatch__usage">Paragraphs, labels</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #35617a;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Accent Blue</span>
+          <span class="sg-swatch__hex">#35617a</span>
+          <span class="sg-swatch__usage">Links, underline buttons</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: #23282d;"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Dark Charcoal</span>
+          <span class="sg-swatch__hex">#23282d</span>
+          <span class="sg-swatch__usage">Mobile nav overlay</span>
+        </div>
+      </div>
+    </div>
+
+    <span class="sg-label" style="margin-top: 32px;">Borders & Subtle</span>
+    <div class="sg-swatch-grid">
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: rgba(102,102,107,0.5);"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Border Subtle</span>
+          <span class="sg-swatch__hex">rgba(102,102,107,0.5)</span>
+          <span class="sg-swatch__usage">Inputs, btn borders</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: rgba(122,124,133,0.8);"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Border Medium</span>
+          <span class="sg-swatch__hex">rgba(122,124,133,0.8)</span>
+          <span class="sg-swatch__usage">Stay-connected inputs</span>
+        </div>
+      </div>
+      <div class="sg-swatch">
+        <div class="sg-swatch__color" style="background: rgba(53,97,122,0.5);"></div>
+        <div class="sg-swatch__info">
+          <span class="sg-swatch__name">Accent Border</span>
+          <span class="sg-swatch__hex">rgba(53,97,122,0.5)</span>
+          <span class="sg-swatch__usage">Underline btn border</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       2. TYPOGRAPHY SCALE
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">02 — Typography Scale</div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">H1 — Queens-Condensed 44px / Light 300</span>
+      <h1 class="heading-xl">Plan Your San Diego Meetings &amp; Events</h1>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">H2 — Queens-Condensed 24px / Regular 400</span>
+      <h2 class="heading-lg">Contact Information</h2>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Decorative XL — Queens 44px / Light 300</span>
+      <div class="heading-decorative-xl">Sign up to be the first to know</div>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Decorative LG — Queens 40px / Regular</span>
+      <div class="heading-decorative-lg">about seasonal happenings, exclusive offers and more from Pendry Hotels &amp; Resorts.</div>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Body Paragraph — Untitled-Sans 20px / Regular</span>
+      <p class="body-text">Please fill out the Request for Proposal form, and we will be in touch soon.</p>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Body Small — Untitled-Sans 16px / Regular</span>
+      <p class="body-text-sm">Fields marked (*) are required. We will contact you within 2 business days.</p>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Nav Link — Untitled-Sans 13px / Uppercase / 2px tracking</span>
+      <div style="display: flex; gap: 32px; background: #f1efeb; padding: 20px 24px; align-items: center;">
+        <a class="nav-link" href="#">Accommodations</a>
+        <a class="nav-link" href="#">Dining &amp; Drink</a>
+        <a class="nav-link" href="#">Gatherings</a>
+        <a class="nav-link" href="#">Wellness</a>
+        <a class="nav-link" href="#">Experiences</a>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Caption — Untitled-Sans 13px</span>
+      <p class="caption">© 2024 Pendry Hotels &amp; Resorts. All rights reserved.</p>
+    </div>
+
+    <div style="margin-bottom: 48px;">
+      <span class="sg-label">Label (floating form label) — Untitled-Sans 10px</span>
+      <span class="label-text">First Name *</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       3. BUTTON VARIANTS
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">03 — Button Variants</div>
+
+    <div class="sg-row">
+      <div>
+        <button class="btn-primary">Submit Proposal</button>
+        <span class="sg-component-label">.btn-primary / .c-button--box</span>
+      </div>
+      <div>
+        <button class="btn-secondary">Reserve</button>
+        <span class="sg-component-label">.btn-secondary / .c-button--secondary</span>
+      </div>
+      <div>
+        <a href="#" class="btn-ghost">View All Gatherings</a>
+        <span class="sg-component-label">.btn-ghost / .c-button--underline</span>
+      </div>
+    </div>
+
+    <div class="sg-box sg-box--dark" style="margin-top: 24px;">
+      <span class="sg-label" style="color: #888;">On dark background</span>
+      <div class="sg-row">
+        <div>
+          <button class="btn-primary" style="color: white; border-color: rgba(255,255,255,0.4);">Submit Proposal</button>
+          <span class="sg-component-label" style="color: #666;">.btn-primary (inverted)</span>
+        </div>
+        <div>
+          <button class="btn-secondary" style="color: white;">Reserve</button>
+          <span class="sg-component-label" style="color: #666;">.btn-secondary (inverted)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       4. FORM ELEMENTS
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">04 — Form Elements</div>
+
+    <div style="max-width: 480px;">
+      <!-- Text input with floating label -->
+      <div class="form-field" style="position: relative;">
+        <label class="form-label form-label--float" style="position: absolute; top: 12px; transform: none; font-size: 10px; letter-spacing: 0.016px;">First Name *</label>
+        <input type="text" class="form-input" value="Jane" />
+        <span class="sg-component-label">.form-input (with floating label)</span>
+      </div>
+
+      <!-- Empty input -->
+      <div class="form-field" style="position: relative; margin-top: 30px;">
+        <label class="form-label" style="position: absolute; top: 50%; transform: translateY(-50%); left: 16px; font-size: 15px; pointer-events: none; color: var(--color-text-medium);">Last Name *</label>
+        <input type="text" class="form-input" />
+        <span class="sg-component-label">.form-input (empty state)</span>
+      </div>
+
+      <!-- Select -->
+      <div class="form-field" style="margin-top: 30px;">
+        <select class="form-select">
+          <option>Mr.</option>
+          <option>Mrs.</option>
+          <option>Ms.</option>
+          <option>Dr.</option>
+        </select>
+        <span class="sg-component-label">.form-select</span>
+      </div>
+
+      <!-- Textarea -->
+      <div style="margin-top: 30px;">
+        <label class="form-label form-label--float" style="position: relative; top: auto; left: auto; transform: none; display: block; margin-bottom: 4px; font-size: 10px; padding-left: 0;">Additional Comments</label>
+        <textarea class="form-textarea" rows="4" placeholder=""></textarea>
+        <span class="sg-component-label">.form-textarea</span>
+      </div>
+
+      <!-- Submit -->
+      <div style="margin-top: 24px;">
+        <button class="btn-primary">Submit</button>
+        <span class="sg-component-label">.btn-primary used as form submit</span>
+      </div>
+    </div>
+
+    <!-- Stay-connected form variant -->
+    <div style="margin-top: 64px; padding: 40px; background: var(--color-white);">
+      <span class="sg-label">Stay-Connected Form Variant (smaller inputs)</span>
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 16px;">
+        <input type="text" class="form-input form-input--sm" placeholder="First Name" style="width: 160px;" />
+        <input type="text" class="form-input form-input--sm" placeholder="Last Name" style="width: 160px;" />
+        <input type="email" class="form-input form-input--sm" placeholder="Email" style="width: 200px;" />
+        <a href="#" class="btn-ghost">Submit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       5. NAVIGATION
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">05 — Navigation</div>
+
+    <!-- Desktop nav bar -->
+    <div class="nav-bar" style="margin-bottom: 8px;">
+      <div class="nav-bar__inner">
+        <a class="nav-link" href="#">Accommodations</a>
+        <a class="nav-link" href="#">Dining &amp; Drink</a>
+        <a class="nav-link" href="#">Gatherings</a>
+        <a class="nav-link" href="#">Wellness</a>
+        <a class="nav-link" href="#">Experiences</a>
+        <a class="nav-link" href="#">Gallery</a>
+        <a class="nav-link" href="#">Offers</a>
+      </div>
+    </div>
+    <span class="sg-component-label">.nav-bar — desktop navigation, 66px height, #f1efeb background</span>
+
+    <!-- Full header -->
+    <div class="header-bar" style="background: var(--color-sand-gray); margin-top: 32px;">
+      <div class="header-bar__top" style="background: transparent;">
+        <button style="background: none; border: none; cursor: pointer; padding: 8px; display: flex; flex-direction: column; gap: 5px;">
+          <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+          <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+          <span style="display: block; width: 24px; height: 1px; background: #231f20;"></span>
+        </button>
+        <div class="header-bar__logo">PENDRY</div>
+        <a href="#" class="btn-secondary">Reserve</a>
+      </div>
+      <div class="nav-bar">
+        <div class="nav-bar__inner">
+          <a class="nav-link" href="#">Accommodations</a>
+          <a class="nav-link" href="#">Dining &amp; Drink</a>
+          <a class="nav-link" href="#" style="border-bottom: 1px solid #231f20;">Gatherings</a>
+          <a class="nav-link" href="#">Wellness</a>
+          <a class="nav-link" href="#">Experiences</a>
+          <a class="nav-link" href="#">Gallery</a>
+          <a class="nav-link" href="#">Offers</a>
+        </div>
+      </div>
+    </div>
+    <span class="sg-component-label">.header-bar — full header, 146px total height</span>
+  </div>
+
+  <!-- ============================================================
+       6. LAYOUT GRIDS
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">06 — Layout Grids</div>
+
+    <span class="sg-label">2-Column Grid (.grid-2col)</span>
+    <div class="grid-2col" style="margin-bottom: 32px;">
+      <div style="background: #e8e5e1; padding: 40px; text-align: center; font-family: monospace; font-size: 13px; color: #888;">Col 1</div>
+      <div style="background: #e8e5e1; padding: 40px; text-align: center; font-family: monospace; font-size: 13px; color: #888;">Col 2</div>
+    </div>
+
+    <span class="sg-label">3-Column Grid (.grid-3col)</span>
+    <div class="grid-3col" style="margin-bottom: 32px;">
+      <div style="background: #e8e5e1; padding: 40px; text-align: center; font-family: monospace; font-size: 13px; color: #888;">Col 1</div>
+      <div style="background: #e8e5e1; padding: 40px; text-align: center; font-family: monospace; font-size: 13px; color: #888;">Col 2</div>
+      <div style="background: #e8e5e1; padding: 40px; text-align: center; font-family: monospace; font-size: 13px; color: #888;">Col 3</div>
+    </div>
+
+    <span class="sg-label">RFP 2-Column Layout (col-lg-6 + col-lg-5 offset-lg-1)</span>
+    <div class="row" style="margin-bottom: 8px;">
+      <div class="col-1-2" style="background: #e8e5e1; padding: 40px; font-family: monospace; font-size: 13px; color: #888;">Form (50% width)</div>
+      <div class="col-5-12 col-offset-1-12" style="background: #d8d5d1; padding: 40px; font-family: monospace; font-size: 13px; color: #888;">Sidebar (41.7% + 8.3% offset)</div>
+    </div>
+    <span class="sg-component-label">.row > .col-1-2 + .col-5-12.col-offset-1-12</span>
+
+    <span class="sg-label" style="margin-top: 32px;">Footer 4-Column Grid</span>
+    <div class="footer__grid" style="padding: 40px; background: var(--color-sand-gray); margin-bottom: 8px;">
+      <div style="background: rgba(0,0,0,0.05); padding: 24px; font-family: monospace; font-size: 12px; color: #888;">Logo (167px)</div>
+      <div style="background: rgba(0,0,0,0.05); padding: 24px; font-family: monospace; font-size: 12px; color: #888;">Address + Social (288px)</div>
+      <div style="background: rgba(0,0,0,0.05); padding: 24px; font-family: monospace; font-size: 12px; color: #888;">Nav Links (flexible)</div>
+      <div style="background: rgba(0,0,0,0.05); padding: 24px; font-family: monospace; font-size: 12px; color: #888;">LVX Logo (auto)</div>
+    </div>
+    <span class="sg-component-label">.footer__grid — CSS grid with fixed first 2 columns</span>
+  </div>
+
+  <!-- ============================================================
+       7. SECTION TEMPLATES
+       ============================================================ -->
+  <div class="sg-section">
+    <div class="sg-title">07 — Section Templates</div>
+  </div>
+</div>
+
+<!-- RFP SECTION TEMPLATE -->
+<section class="section-form">
+  <div class="container">
+    <span class="sg-label" style="margin-bottom: 32px; display: block;">RFP Form Section (.section-form)</span>
+    <div class="section-form__inner">
+      <div class="row">
+        <div class="col-1-2">
+          <div style="padding-bottom: 85px;">
+            <h1 class="heading-xl">Plan Your San Diego<br>Meetings &amp; Events</h1>
+            <p class="body-text">Please fill out the Request for Proposal form, and we will be in touch soon.</p>
+            <p class="form-required">Fields marked (*) are required.</p>
+
+            <div class="form-field" style="position: relative;">
+              <label class="form-label form-label--float" style="position: absolute; top: 12px; font-size: 10px; letter-spacing: 0.016px;">First Name *</label>
+              <input type="text" class="form-input" value="Jane" />
+            </div>
+            <div class="form-field" style="margin-top: 30px; position: relative;">
+              <label class="form-label form-label--float" style="position: absolute; top: 12px; font-size: 10px; letter-spacing: 0.016px;">Last Name *</label>
+              <input type="text" class="form-input" value="Smith" />
+            </div>
+            <div class="form-field" style="margin-top: 30px; position: relative;">
+              <label class="form-label form-label--float" style="position: absolute; top: 12px; font-size: 10px; letter-spacing: 0.016px;">Email *</label>
+              <input type="email" class="form-input" value="jane@company.com" />
+            </div>
+            <div style="margin-top: 30px;">
+              <select class="form-select">
+                <option>Type of Gathering *</option>
+                <option>Association</option>
+                <option>Conference</option>
+                <option>Corporate</option>
+              </select>
+            </div>
+            <div style="margin-top: 30px;">
+              <textarea class="form-textarea" rows="4" placeholder="Additional Comments"></textarea>
+            </div>
+            <button class="btn-primary" style="margin-top: 24px;">Submit</button>
+          </div>
+        </div>
+        <div class="col-5-12 col-offset-1-12">
+          <div class="contacts-sidebar">
+            <h2 class="contacts-sidebar__title">Contact Information</h2>
+            <a href="tel:6197387000">(619) 738-7000</a>
+            <a href="mailto:psdsales@pendry.com">psdsales@pendry.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAY CONNECTED SECTION TEMPLATE -->
+<section class="section-cta">
+  <div class="container">
+    <span class="sg-label" style="margin-bottom: 32px; display: block;">Stay-Connected Section (.section-cta)</span>
+    <div style="display: flex; align-items: flex-start; gap: 60px; flex-wrap: wrap;">
+      <div style="flex: 0 0 58.333%;">
+        <div class="heading-decorative-xl">Sign up to be the first to know</div>
+        <div class="heading-decorative-lg">about seasonal happenings, exclusive offers and more from Pendry Hotels &amp; Resorts.</div>
+      </div>
+      <div style="flex: 1;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;">
+          <input type="text" class="form-input form-input--sm" placeholder="First Name" style="width: 140px;" />
+          <input type="text" class="form-input form-input--sm" placeholder="Last Name" style="width: 140px;" />
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <input type="email" class="form-input form-input--sm" placeholder="Email" style="flex: 1;" />
+          <a href="#" class="btn-ghost" style="white-space: nowrap;">Submit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER TEMPLATE -->
+<footer class="footer">
+  <div class="container">
+    <span class="sg-label" style="margin-bottom: 32px; display: block;">Footer (.footer)</span>
+    <div class="footer__grid">
+      <!-- Logo col -->
+      <div>
+        <div style="width: 60px; height: 60px; background: #231f20; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-family: var(--font-body); font-size: 9px; letter-spacing: 1px; text-align: center;">PENDRY<br>ROSE</div>
+      </div>
+      <!-- Address col -->
+      <div class="footer__address">
+        <strong style="display: block; margin-bottom: 8px; font-weight: 500;">San Diego</strong>
+        <div>Tel: <a href="tel:16197387000" class="footer__nav-link">(619) 738-7000</a></div>
+        <div><a href="#" class="footer__nav-link">550 J Street<br>San Diego, CA 92101</a></div>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" style="background: #65656a; border-radius: 50%;"></a>
+          <a href="#" class="footer__social-link" style="background: #65656a; border-radius: 50%;"></a>
+        </div>
+      </div>
+      <!-- Nav col -->
+      <div>
+        <ul class="footer__nav">
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Contact</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Magazine</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Media</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">FAQs</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Montage International</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Shop Pendry</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Gift Cards</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Careers</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Privacy Policy</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Terms of Service</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Accessibility</a></li>
+          <li class="footer__nav-item"><a href="#" class="footer__nav-link">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <!-- LVX col -->
+      <div style="text-align: right;">
+        <div style="font-family: var(--font-body); font-size: 13px; letter-spacing: 3px; color: #65656a; text-transform: uppercase;">LVX</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Floating label behavior demo
+  document.querySelectorAll('.form-input').forEach(input => {
+    const label = input.previousElementSibling;
+    if (label && label.classList.contains('form-label')) {
+      input.addEventListener('focus', () => label.classList.add('form-label--float'));
+      input.addEventListener('blur', () => {
+        if (!input.value) label.classList.remove('form-label--float');
+      });
+      if (input.value) label.classList.add('form-label--float');
+    }
+  });
+</script>
+</body>
+</html>

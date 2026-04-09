@@ -1,0 +1,186 @@
+<!--
+  COMPONENT: RFP Form Section
+  ============================
+  The full "Request for Proposal" form section with 2-column layout:
+  - Left column (col-lg-6): Page title + floating-label form fields + submit button
+  - Right column (col-lg-5 offset-lg-1): Contact info sidebar with border-left divider
+
+  Features:
+  - Floating label pattern: labels animate from inside to above inputs on focus
+  - All inputs: height 56px, 0px border-radius, 1px border rgba(102,102,107,0.5)
+  - Section background: #f1efeb (sand gray)
+  - Section padding: 64px top/bottom
+
+  Usage:
+  - Drop this section into any page between the header and footer.
+  - Include the floating label JS at the bottom of the page (or inline).
+  - Replace action="#" with your form handler URL.
+
+  Dependencies: pendry-tokens.css, pendry-components.css
+-->
+
+<section class="section-form" style="background-color: var(--color-sand-gray); padding: var(--spacing-section-md) 0;">
+  <div class="container">
+    <div class="row">
+
+      <!-- Left: Form -->
+      <div class="col-1-2" style="padding-bottom: 85px;">
+        <h1 class="heading-xl">Plan Your San Diego<br>Meetings &amp; Events</h1>
+        <p class="body-text">Please fill out the Request for Proposal form, and we will be in touch soon.</p>
+        <p class="form-required">Fields marked (*) are required.</p>
+
+        <form action="#" method="post" novalidate>
+
+          <!-- Prefix (select) -->
+          <div style="margin-bottom: var(--spacing-form-row);">
+            <select class="form-select" name="prefix" aria-label="Prefix" required>
+              <option value="" disabled>Prefix *</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Miss">Miss</option>
+              <option value="Dr.">Dr.</option>
+              <option value="Prof.">Prof.</option>
+              <option value="Prefer not to specify">Prefer not to specify</option>
+            </select>
+          </div>
+
+          <!-- First Name -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">First Name *</label>
+            <input type="text" name="first_name" class="form-input" required autocomplete="given-name" />
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">Last Name *</label>
+            <input type="text" name="last_name" class="form-input" required autocomplete="family-name" />
+          </div>
+
+          <!-- Email -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">Email *</label>
+            <input type="email" name="email" class="form-input" required autocomplete="email" />
+          </div>
+
+          <!-- Phone -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">Phone Number *</label>
+            <input type="tel" name="phone" class="form-input" required autocomplete="tel" />
+          </div>
+
+          <!-- State/Province -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">State / Province *</label>
+            <input type="text" name="state" class="form-input" required />
+          </div>
+
+          <!-- Country -->
+          <div style="margin-bottom: var(--spacing-form-row);">
+            <select class="form-select" name="country" aria-label="Country of Residence" required>
+              <option value="United States">Country of Residence *</option>
+              <option value="United States">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Australia">Australia</option>
+            </select>
+          </div>
+
+          <!-- Type of Gathering -->
+          <div style="margin-bottom: var(--spacing-form-row);">
+            <select class="form-select" name="gathering_type" aria-label="Type of Gathering" required>
+              <option value="" disabled>Type of Gathering *</option>
+              <option value="Association">Association</option>
+              <option value="Board Meeting">Board Meeting</option>
+              <option value="Conference">Conference</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Government">Government</option>
+              <option value="Incentive">Incentive</option>
+              <option value="Sports">Sports</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Number of Rooms -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">Number of Rooms *</label>
+            <input type="number" name="rooms" class="form-input" required min="1" />
+          </div>
+
+          <!-- Company -->
+          <div class="form-field js-float-field" style="position: relative; height: var(--input-height); margin-bottom: var(--spacing-form-row);">
+            <label class="form-label js-float-label" style="position: absolute; top: 50%; left: 16px; transform: translateY(-50%); transition: all 0.2s ease; pointer-events: none; font-size: 15px; color: var(--color-text-medium);">Company / Organization</label>
+            <input type="text" name="company" class="form-input" />
+          </div>
+
+          <!-- Additional Comments -->
+          <div style="margin-bottom: var(--spacing-form-row);">
+            <textarea name="comments" class="form-textarea" rows="4" placeholder="Additional Comments (Alternative Dates, Contact Role)"></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-primary" style="margin-top: 24px;">
+            Submit
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Right: Contact Info Sidebar -->
+      <div class="col-5-12 col-offset-1-12">
+        <div class="contacts-sidebar">
+          <h2 class="contacts-sidebar__title">Contact Information</h2>
+          <a href="tel:6197387000" style="
+            color: var(--color-accent-blue);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            display: block;
+            margin-bottom: 8px;
+          ">(619) 738-7000</a>
+          <a href="mailto:psdsales@pendry.com" style="
+            color: var(--color-accent-blue);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            display: block;
+          ">psdsales@pendry.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Floating label JS — add once per page -->
+<script>
+(function() {
+  document.querySelectorAll('.js-float-field').forEach(function(field) {
+    var input = field.querySelector('input, textarea');
+    var label = field.querySelector('.js-float-label');
+    if (!input || !label) return;
+
+    function floatUp() {
+      label.style.top = '12px';
+      label.style.transform = 'none';
+      label.style.fontSize = '10px';
+      label.style.letterSpacing = '0.016px';
+      label.style.color = 'var(--color-text-medium)';
+    }
+
+    function floatDown() {
+      if (!input.value) {
+        label.style.top = '50%';
+        label.style.transform = 'translateY(-50%)';
+        label.style.fontSize = '15px';
+        label.style.letterSpacing = 'normal';
+      }
+    }
+
+    input.addEventListener('focus', floatUp);
+    input.addEventListener('blur', floatDown);
+    if (input.value) floatUp();
+  });
+})();
+</script>

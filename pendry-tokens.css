@@ -1,0 +1,173 @@
+/* ============================================================
+   PENDRY SAN DIEGO — DESIGN TOKENS
+   Source: https://www.pendry.com/san-diego/gatherings/rfp/
+   Extracted: April 2026
+   ============================================================ */
+
+:root {
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Font Families
+     Note: Queens, Queens-Condensed, and Untitled-Sans are
+     proprietary custom fonts loaded via @font-face.
+     Fallbacks provided for non-licensed environments.
+  -------------------------------------------------- */
+  --font-heading:       'Queens-Condensed', 'Georgia', serif;
+  --font-decorative:    'Queens', 'Georgia', serif;
+  --font-body:          'Untitled-Sans', 'Helvetica Neue', Arial, sans-serif;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Weights
+  -------------------------------------------------- */
+  --font-weight-light:   300;
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Size Scale
+  -------------------------------------------------- */
+  --text-h1:           44px;
+  --text-h2:           24px;
+  --text-decorative-xl: 44px;
+  --text-decorative-lg: 40px;
+  --text-body:         16px;
+  --text-paragraph:    20px;
+  --text-nav:          13px;
+  --text-button:       14px;
+  --text-input:        15px;
+  --text-label:        10px;
+  --text-footer:       15px;
+  --text-link-accent:  18px;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Line Heights
+  -------------------------------------------------- */
+  --lh-h1:        48px;
+  --lh-h2:        29px;
+  --lh-body:      23px;
+  --lh-paragraph: 28px;
+  --lh-button:    22px;
+  --lh-label:     10px;
+  --lh-footer:    19.95px;
+
+  /* --------------------------------------------------
+     TYPOGRAPHY — Letter Spacing
+  -------------------------------------------------- */
+  --ls-normal:  normal;
+  --ls-label:   0.016px;
+  --ls-button:  2px;
+  --ls-nav:     2px;
+  --ls-h2:      0.192px;
+
+  /* --------------------------------------------------
+     COLOUR — Primary Palette
+  -------------------------------------------------- */
+  --color-primary-dark:   #231f20;   /* headings, nav links, button text */
+  --color-sand-gray:      #f1efeb;   /* section bg: rfp box, footer */
+  --color-white:          #ffffff;   /* main content bg, form inputs */
+  --color-body-gray:      #65656a;   /* body text, footer text */
+  --color-text-medium:    #4a4a4a;   /* paragraphs, label text */
+  --color-accent-blue:    #35617a;   /* underline buttons, accent links */
+  --color-dark-charcoal:  #23282d;   /* mobile nav background */
+
+  /* --------------------------------------------------
+     COLOUR — Borders & Overlays
+  -------------------------------------------------- */
+  --color-border-subtle:   rgba(102, 102, 107, 0.5);  /* inputs, box btn, sidebar */
+  --color-border-medium:   rgba(122, 124, 133, 0.8);  /* stay-connected inputs */
+  --color-border-accent:   rgba(53, 97, 122, 0.5);    /* underline btn border-bottom */
+  --color-overlay-dark:    rgba(0, 0, 0, 0.5);        /* image overlays */
+
+  /* --------------------------------------------------
+     SPACING — Section & Layout
+  -------------------------------------------------- */
+  --spacing-section-sm:   16px;    /* nav inner padding */
+  --spacing-section-md:   64px;    /* rfp box section padding */
+  --spacing-section-lg:   119px;   /* footer padding */
+  --spacing-section-xl:   135px;   /* stay-connected padding */
+  --spacing-form-row:     30px;    /* margin-bottom between form rows */
+  --spacing-container-px: 24px;    /* container horizontal padding */
+
+  /* --------------------------------------------------
+     LAYOUT
+  -------------------------------------------------- */
+  --container-max-width: 1140px;
+  --page-max-width:      1200px;
+  --nav-height:          66px;
+  --header-height:       146px;
+
+  /* --------------------------------------------------
+     COMPONENT — Form
+  -------------------------------------------------- */
+  --input-height:         56px;
+  --input-height-sm:      48px;     /* stay-connected form */
+  --input-padding:        15px 8px 0px 16px;  /* floating label style */
+  --input-padding-sm:     10px;
+  --textarea-height:      120px;
+  --textarea-padding:     26px 8px 0px 16px;
+
+  /* --------------------------------------------------
+     COMPONENT — Buttons
+  -------------------------------------------------- */
+  --btn-box-width:        250px;
+  --btn-box-height:       58px;
+  --btn-box-padding:      5px 15px;
+  --btn-box-border:       1px solid var(--color-border-subtle);
+
+  /* --------------------------------------------------
+     BORDERS & RADIUS
+  -------------------------------------------------- */
+  --radius-button:  0px;   /* no rounded corners — brand standard */
+  --radius-input:   0px;
+  --radius-card:    0px;
+
+  /* --------------------------------------------------
+     TRANSITIONS
+  -------------------------------------------------- */
+  --transition-base: 0.2s ease;
+}
+
+/* --------------------------------------------------
+   @font-face — Custom Font Declarations
+   Paths assume fonts are served from /fonts/ directory.
+   Original files from: Pendry CDN (pendry.com theme)
+-------------------------------------------------- */
+@font-face {
+  font-display: swap;
+  font-family: 'Untitled-Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/untitled-sans-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Untitled-Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/untitled-sans-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Queens-Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/queens-condensed-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Queens-Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/queens-condensed-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Queens';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/queens-300.woff2') format('woff2');
+}

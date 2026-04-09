@@ -1,0 +1,114 @@
+<!--
+  COMPONENT: Hero / Page Header
+  ==============================
+  The page-level header that appears at the top of the main content area,
+  directly below the site navigation.
+
+  On the RFP page this is a minimal text-only hero integrated into the
+  form section (no full-bleed image). For image hero variants used on
+  other Pendry pages, see the image-hero variant below.
+
+  Pattern A — Text-only page header (RFP page style):
+  - Background: #f1efeb (sand gray) — same as rfp-box section
+  - Padding: shares the rfp-box section's 64px padding
+  - H1: Queens-Condensed 44px/weight 300, color #231f20
+  - Intro text: Untitled-Sans 20px, color #4a4a4a
+
+  Pattern B — Image hero (other Pendry pages):
+  - Full-width image with optional dark overlay
+  - H1 centered over image, white text
+  - Image aspect ratio: typically 16:9 or 3:2 (desktop)
+
+  Usage:
+  - Pattern A: Use inside .section-form as the form section's header.
+  - Pattern B: Place directly below <header>, before main content.
+
+  Dependencies: pendry-tokens.css, pendry-components.css
+-->
+
+
+<!-- ==========================================
+     PATTERN A: Text-only hero (RFP page style)
+     Used as part of the gray-background form section
+     ========================================== -->
+<div class="rfp-page-hero" style="
+  padding-bottom: 40px;
+">
+  <h1 class="heading-xl">Plan Your San Diego<br>Meetings &amp; Events</h1>
+  <p class="body-text">
+    Please fill out the Request for Proposal form, and we will be in touch soon.
+  </p>
+</div>
+
+
+<!-- ==========================================
+     PATTERN B: Full-bleed image hero
+     Replace the background-image URL with your image.
+     Typical aspect ratio: 16:9 desktop, 1:1 mobile.
+     ========================================== -->
+<section class="image-hero" style="
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 480px;
+  max-height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-dark-charcoal);
+">
+  <!-- Background image -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    background-image: url('https://uploads.pendry.com/redesign/wp-content/uploads/sites/2/2023/09/26094514/PSD-Gatherings-1.webp');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  "></div>
+
+  <!-- Optional dark overlay for text legibility -->
+  <div style="
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-overlay-dark);
+  "></div>
+
+  <!-- Hero content -->
+  <div style="
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 var(--spacing-container-px);
+    max-width: var(--container-max-width);
+  ">
+    <h1 style="
+      font-family: var(--font-heading);
+      font-size: var(--text-h1);
+      font-weight: var(--font-weight-light);
+      line-height: var(--lh-h1);
+      color: var(--color-white);
+      margin: 0 0 24px 0;
+    ">
+      Gatherings at Pendry San Diego
+    </h1>
+    <p style="
+      font-family: var(--font-body);
+      font-size: var(--text-paragraph);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--lh-paragraph);
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    ">
+      Elevate your next meeting, conference, or celebration in the heart of San Diego.
+    </p>
+    <a href="/san-diego/gatherings/rfp/" class="btn-primary" style="
+      color: white;
+      border-color: rgba(255,255,255,0.5);
+    ">
+      Request Proposal
+    </a>
+  </div>
+</section>
